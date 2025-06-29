@@ -1,16 +1,34 @@
 from turtle import Turtle
-segment = ['part_1', 'part_2', 'part_3']
-class Snake :
+from color_list import Colorchangeturtle
+segment1 = ['part_1', 'part_2', 'part_3']
+class Snake(Colorchangeturtle) :
     def __init__(self):
+        super().__init__()
         self.snake_part = []
-        self.connect_part()
+        self.connect_part(segment1)
         
-    def connect_part(self):
+        
+    
+    
+    def new_snake(self):
+        part = Colorchangeturtle()
+        part.shape('square')
+        part.change_color()
+        part.penup()
+     
+        self.snake_part.append(part)
+        
+    
+    
+    def connect_part(self, segment):
         n = 0
         for part in segment:
-            part = Turtle(shape = 'square')
+            part = Colorchangeturtle()
+            part.change_color()
+            part.shape('square')
+            part.change_color()
             part.penup()
-            part.color('white')
+            
             x_position = 0 - 20 * n
             part.goto(x = x_position, y = 0)
             n += 1
@@ -25,7 +43,7 @@ class Snake :
         self.snake_part[0].forward(20)
         
         
-        
+   
     def left(self):
         self.snake_part[0].setheading(self.snake_part[0].heading() + 90)
         
